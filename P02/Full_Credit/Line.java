@@ -26,7 +26,7 @@ public class Line {
    @Override
    public String toString()
    {
-     return color + " (" + x1 +"," + y1 + ") " + " - " + " (" + x2 + "," + y2 + ") " + " has length "; 
+     return color + " (" + x1 +"," + y1 + ") " + "-" + " (" + x2 + "," + y2 + ") " + " has length "; 
    }
 
 }
