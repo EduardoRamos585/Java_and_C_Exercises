@@ -10,7 +10,7 @@ public enum Color { AUBURN(0xA52A2A), AZURE(0x007FFF), BEIGE(0xF5F5DC),BLOND(0xF
  @Override
  public String toString()
  {
-   return this.name() + " " + rgb;
+   return this.name() + " " + "(" + String.format("%x",rgb) + ")";
    
  }
 
