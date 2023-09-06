@@ -31,8 +31,8 @@ public class TestLine
 
       System.out.print(point);
       System.out.print(distance);
-
-
+ 
+      System.out.println();
 
   }
 }
