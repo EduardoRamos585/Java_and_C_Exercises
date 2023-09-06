@@ -39,7 +39,8 @@ public class Publication
    @Override 
    public String toString()
    {
-     
+    return "  " + author + "," + " copyright:" + copyright + "," + title;
+    
    }
 
 
