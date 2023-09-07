@@ -32,7 +32,10 @@ public class Library
   @Override 
   public String toString()
   {
-   return 
+   return " Jonesville Public Library " + "\n" + for(int i : publications ) System.out.println(i, publications.get(i));
+
+
+
   }
   
 

@@ -18,7 +18,7 @@ public class Publication
 
       if(copyright < 1900 || copyright > ((this.dueDate).getYear()))
       {
-        System.out.println(" Invalid year entered");
+        throw new IllegalArgumentException("Invalid copyright year");
       }
 
 
@@ -39,12 +39,16 @@ public class Publication
    @Override 
    public String toString()
    {
-    return "  " + author + "," + " copyright:" + copyright + "," + title;
     
+     return " " + author + "," + "copyright" + copyright + "," + title;
+    
+      
+     
    }
 
 
-
+    
+  
 
 }
 
