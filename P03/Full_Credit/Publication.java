@@ -13,6 +13,7 @@ public class Publication
       this.title = title;
       this.author = author;
       this.copyright = copyright;
+      this.dueDate = LocalDate.now();
 
       
 
@@ -27,7 +28,7 @@ public class Publication
    public void checkOut( String patron)
    {
     this.loanedTo = patron;
-    this.dueDate = (this.dueDate.now().plusDays(14));
+    this.dueDate = dueDate.now().plusDays(14);
 
    }
 

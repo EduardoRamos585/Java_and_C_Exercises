@@ -24,7 +24,7 @@ public class Library
   public void checkOut(int publicationindex, String patron)
   {
    
-  (publications.get(publicationindex)).checkOut(patron);
+    (publications.get(publicationindex)).checkOut(patron);
 
   }
 
@@ -32,7 +32,17 @@ public class Library
   @Override 
   public String toString()
   {
-   return " Jonesville Public Library " + "\n" + for(int i : publications ) System.out.println(i, publications.get(i));
+    int j = 0;
+
+    System.out.println(name);
+
+    for(Publication i : publications)
+    {
+      System.out.println("(" + j + i);   
+    }
+
+    return "\n";
+
 
 
 
