@@ -35,10 +35,13 @@ public class Library
     int j = 0;
 
     System.out.println(name);
+    System.out.println();
+
 
     for(Publication i : publications)
     {
-      System.out.println("(" + j + i);   
+      System.out.println("(" + j + i);
+      j++;
     }
 
     return "\n";

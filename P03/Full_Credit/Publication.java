@@ -41,7 +41,7 @@ public class Publication
    public String toString()
    {
     
-     return " " + author + "," + "copyright" + copyright + "," + title;
+     return " " + author + " ," + "copyright : " + copyright + ", " + '"' +  title + '"';
     
       
      
