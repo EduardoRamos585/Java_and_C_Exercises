@@ -40,9 +40,16 @@ public class Publication
    @Override 
    public String toString()
    {
-    
-     return " " + author + " ," + "copyright : " + copyright + ", " + '"' +  title + '"';
-    
+     if(loanedTo == null )
+     {
+
+        return " " + author + " ," + "copyright : " + copyright + ", " + '"' +  title + '"';
+     }
+     else
+     {
+        return " " + author + " ," + "copyright : " + copyright + ", " + '"' + title + '"' + " -->" + " loaned to " + loanedTo + " until " + dueDate;
+     }
+
       
      
    }

@@ -11,10 +11,18 @@ public class LibraryManager {
     Publication book_three = new Publication("The Book Thief", "Markus Zusak", 2006);
 
 
+   try
+   {
 
     Dallas_lib.addPublication(book_one);
     Dallas_lib.addPublication(book_two);
     Dallas_lib.addPublication(book_three);
+   }
+   catch(Exception e)
+   {
+     System.err.println(e.getMessage());
+     System.exit(-1);
+   }
 
 
 
@@ -23,12 +31,31 @@ public class LibraryManager {
     Scanner in = new Scanner(System.in);
 
     System.out.println();
-    System.out.print("Which book to check out");
-    int selection = in.nextInt();
-    System.out.println();
-    System.out.print("What is your name ? ");
+    System.out.print("What is your name ?");
     String name = in.nextLine();
-    System.out.print(" You have selected " + selection + " and your name is " + name);
+    System.out.print("What book would you like ? ");
+
+
+
+    int selection;
+
+    if(in.hasNextInt())
+    {
+      selection = in.nextInt();
+    }
+    else
+    {
+      System.out.println( "Invalid selection, using default selection" );
+      selection = 0;
+    }
+    
+    Dallas_lib.checkOut(selection,name);
+
+
+    System.out.print(Dallas_lib);
+
+
+
 
 
     
