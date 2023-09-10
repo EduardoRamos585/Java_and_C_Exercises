@@ -23,24 +23,9 @@ public class Library
   
   public void checkOut(int publicationindex, String patron)
   {
-
-
-   if(publicationindex > -1 && publicationindex < publications.size())
-   {
-     (publications.get(publicationindex)).checkOut(patron);
-   }
-   else
-   {
-     System.out.println(" Invalid selection, default option in use ");
-     publicationindex = 0;
-     (publications.get(publicationindex)).checkOut(patron);
-
-   }
-
-   
-   
-
-  }
+	
+   (publications.get(publicationindex)).checkOut(patron);
+ }
 
 
   @Override 
@@ -59,8 +44,6 @@ public class Library
     }
 
     return "\n";
-
-
 
 
   }

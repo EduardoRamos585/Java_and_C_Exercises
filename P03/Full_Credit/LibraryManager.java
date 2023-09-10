@@ -36,20 +36,19 @@ public class LibraryManager {
     System.out.print("What book would you like ? ");
 
 
-
-    int selection;
-
-    if(in.hasNextInt())
+    try
     {
-      selection = in.nextInt();
+     int selection = in.nextInt();
+     Dallas_lib.checkOut(selection,name);
+     
     }
-    else
+    catch(Exception e)
     {
-      System.out.println( "Invalid selection, using default selection" );
-      selection = 0;
+      System.out.println();
+      System.err.println(e.getMessage());
+      System.out.println();
     }
-    
-    Dallas_lib.checkOut(selection,name);
+
 
 
     System.out.print(Dallas_lib);
