@@ -9,7 +9,7 @@ public class LibraryManager {
     Publication book_one = new Publication("The Adventures of Captain Underpants", "Dav Pilkey",1997);
     Publication book_two = new Publication("Diary of a Wimpy Kid", "Jeff Kinney" , 2007);
     Publication book_three = new Publication("The Book Thief", "Markus Zusak", 2006);
-
+    Patron client_1 = new Patron("Eduardo Ramos", "exr4020@mavs.uta.edu");
 
    try
    {
@@ -17,6 +17,7 @@ public class LibraryManager {
     Dallas_lib.addPublication(book_one);
     Dallas_lib.addPublication(book_two);
     Dallas_lib.addPublication(book_three);
+    Dallas_lib.addPatron(client_1);
    }
    catch(Exception e)
    {
@@ -31,15 +32,19 @@ public class LibraryManager {
     Scanner in = new Scanner(System.in);
 
     System.out.println();
-    System.out.print("What is your name ?");
-    String name = in.nextLine();
-    System.out.print("What book would you like ? ");
+    
 
 
     try
     {
+     System.out.print("Which book would you like to check out");
      int selection = in.nextInt();
-     Dallas_lib.checkOut(selection,name);
+     System.out.println();
+     Dallas_lib.patronMenu();
+     System.out.println();
+     System.out.print("Who are you");
+     int index_Patron = in.nextInt();
+     Dallas_lib.checkOut(selection,index_Patron);
      
     }
     catch(Exception e)
@@ -50,7 +55,7 @@ public class LibraryManager {
     }
 
 
-
+    System.out.println();
     System.out.print(Dallas_lib);
 
 

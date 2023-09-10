@@ -38,7 +38,7 @@ public class Library
 
     for(Patron i : patrons)
     {
-      System.out.println("(" + i + p);
+      System.out.println("("+p + i );
       p++;
     }
 
@@ -50,10 +50,11 @@ public class Library
 
 
   
-  public void checkOut(int publicationindex, String patron)
+  public void checkOut(int publicationindex, int patronIndex)
   {
 	
-   (publications.get(publicationindex)).checkOut(patron);
+   (publications.get(publicationindex)).checkOut(patrons.get(patronIndex));
+   
   }
 
 
