@@ -1,2 +1,10 @@
 catch-22,Joseph Heller,1961
 The Poetry of Robert Frost,Robert Frost,1969
+The Alchemist,Paulo Coelho,1988
+Of Mice and Men,John Steinbeck,1937
+The Catcher in the Rye,J.D Salinger,1951
+The Kite Runner,Khaled Hosseini,2003
+To Kill a Mockingbird,Harper Lee,1960
+Where the Sidewalk Ends,Shel Silverstein,1974
+The Shining,Stephen King,1977
+The Little Prince,Antoine de Saint-Exupery,1943

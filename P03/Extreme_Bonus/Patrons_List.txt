@@ -1,2 +1,8 @@
 Eduardo Ramos,exr4020@mavs.uta.edu
 George Washington,FirstPresident@yahho.com
+John Smith,Jsm@gmail.com
+Theodore Roosevelt,Teddy3@yahoo.com
+Bob the Builder,Wecanfixit@gamil.com
+Spongebob Squarepants,Spongepants@gmail.com
+Julius Caesar,TherealJulius@gmail.com
+William Howard Taft,Taft_Howard@gmail.com

@@ -58,21 +58,21 @@ public class LibraryManager {
 
     try
     {
-     System.out.print("Which book would you like to check out");
-     int selection = in.nextInt();
-     System.out.println();
-     Dallas_lib.patronMenu();
-     System.out.println();
-     System.out.print("Who are you");
-     int index_Patron = in.nextInt();
-     Dallas_lib.checkOut(selection,index_Patron);
+       System.out.print("Which book would you like to check out");
+       int selection = in.nextInt();
+       System.out.println();
+       Dallas_lib.patronMenu();
+       System.out.println();
+       System.out.print("Who are you");
+       int index_Patron = in.nextInt();
+       Dallas_lib.checkOut(selection,index_Patron);
      
     }
     catch(Exception e)
     {
-      System.out.println();
-      System.err.println(e.getMessage());
-      System.out.println();
+       System.out.println();
+       System.err.println(e.getMessage());
+       System.out.println();
     }
 
 
