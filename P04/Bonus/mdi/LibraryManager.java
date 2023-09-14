@@ -1,4 +1,5 @@
 package mdi;
+import library.*;
 import java.util.Scanner;
 
 
