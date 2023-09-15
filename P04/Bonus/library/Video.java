@@ -11,6 +11,7 @@ public class Video extends Publication{
    {
 	   super(title,author,copyright);
 	   this.runtime = Duration.ofMinutes(runtime);
+
    
    }
 
@@ -19,7 +20,7 @@ public class Video extends Publication{
    @Override
    public String toString()
    {
-     return toString() + runtime;
+     return super.toString() + " " + runtime.toMinutes();
    }
 
 
