@@ -49,7 +49,7 @@ public class Publication
      }
      else
      {
-        return " " + author + " ," + "copyright : " + copyright + ", " + '"' + title + '"' + " -->" + " loaned to " + loanedTo + " until " + dueDate;
+        return " " + author + " ," + "copyright : " + copyright + ", " + '"' + title + '"' + "\n  -->" + " loaned to " + loanedTo + " until " + dueDate;
      }
 
       

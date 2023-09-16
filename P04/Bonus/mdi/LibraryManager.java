@@ -11,7 +11,11 @@ public class LibraryManager {
     Publication book_one = new Publication("The Adventures of Captain Underpants", "Dav Pilkey",1997);
     Publication book_two = new Publication("Diary of a Wimpy Kid", "Jeff Kinney" , 2007);
     Publication book_three = new Publication("The Book Thief", "Markus Zusak", 2006);
-    Video Video_1 = new Video("Star Wars","George Lucas", 2002,154);
+    Video Video_1 = new Video("Charlie Schmidt's Keyboard Cat! - THE ORIGINAL!","Keyboard Cat!", 2007,1);
+    Video Video_2 = new Video("Palpatine's Journey","Worthikids", 2020, 2);
+    Video Video_3 = new Video("Gandalf Sax Guy 10 Hours (Original)","Setanta", 2013, 600);
+
+
     Patron client_1 = new Patron("Eduardo Ramos", "exr4020@mavs.uta.edu");
 
    try
@@ -21,6 +25,8 @@ public class LibraryManager {
     Dallas_lib.addPublication(book_two);
     Dallas_lib.addPublication(book_three);
     Dallas_lib.addPublication(Video_1);
+    Dallas_lib.addPublication(Video_2);
+    Dallas_lib.addPublication(Video_3);
     Dallas_lib.addPatron(client_1);
    }
    catch(Exception e)
