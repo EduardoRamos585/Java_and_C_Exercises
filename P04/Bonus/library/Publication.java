@@ -2,6 +2,23 @@ package library;
 
 import java.time.LocalDate;
 
+/**
+ * This class holds the info of the publication such as the title, author, etc
+ *
+ *@author Eduardo Ramos
+ *
+ *@version 1.0
+ *
+ *@since 1.0
+ *
+ *
+ * @license.agreement Gnu General Public License 3.0
+*/
+
+
+
+
+
 public class Publication
 {
    private String title;
@@ -27,6 +44,12 @@ public class Publication
 
    }
 
+/**
+ * Checks out the publication with the patron class belonging to the patron in question
+ *
+ *@param The Patron class for the patron checking out the publication
+*/
+
    public void checkOut( Patron patron)
    {
     this.loanedTo = patron;
@@ -39,6 +62,14 @@ public class Publication
 
    }
 
+
+ /**
+  *
+  * Prints out the information for each Patron class 
+  *
+  *@param none
+  *
+*/
    @Override 
    public String toString()
    {

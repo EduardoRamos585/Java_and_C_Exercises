@@ -1,6 +1,19 @@
 package library;
 import java.time.Duration;
 
+/**
+ * Creates a class for video publications with additonal info such as runtime
+ *
+ * @author Eduardo Ramos
+ *
+ * @version 1.0
+ *
+ * @since 1.0
+ *
+ * @license.agreement Gnu General Public Agreement 3.0
+ *
+*/
+
 public class Video extends Publication{
 
    private Duration runtime;
@@ -21,7 +34,12 @@ public class Video extends Publication{
    }
 
 
-
+/**
+ *
+ * Prints out the information contained within each Video class objects.
+ *
+ *@param none
+*/
    @Override
    public String toString()
    {
