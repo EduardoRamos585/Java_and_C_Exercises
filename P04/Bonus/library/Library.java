@@ -73,7 +73,6 @@ public class Library
 /**
  * Prints out the patron list for user to choose 
  *
- * @param none
  *
  *
 */
@@ -116,8 +115,6 @@ public class Library
 /**
  * Prints out the list of publications for the user to choose
  *
- *
- * @param none
 */
 
 

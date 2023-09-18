@@ -67,7 +67,7 @@ public class Publication
   *
   * Prints out the information for each Patron class 
   *
-  *@param none
+  *
   *
 */
    @Override 
@@ -86,10 +86,5 @@ public class Publication
       
      
    }
-
-
-    
-  
-
 }
 

@@ -30,7 +30,7 @@ public class Patron
  *Prints out the name and email of the patron
  *
  *
- *@param none
+ *
  *
 */
   @Override

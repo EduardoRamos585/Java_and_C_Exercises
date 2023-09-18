@@ -38,8 +38,11 @@ public class Video extends Publication{
  *
  * Prints out the information contained within each Video class objects.
  *
- *@param none
+ *
 */
+
+
+
    @Override
    public String toString()
    {
