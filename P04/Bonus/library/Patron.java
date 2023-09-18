@@ -19,7 +19,11 @@ public class Patron
   private String name;
   private String email;
 
-
+/**
+ * This constructor stores the name and the email of the patron
+ *@param name   The name of the patron
+ *@param email  The email of the patron
+*/
 
   public Patron(String name, String email)
   {
@@ -29,7 +33,7 @@ public class Patron
 /**
  *Prints out the name and email of the patron
  *
- *
+ *@return  A string that contains a message
  *
  *
 */

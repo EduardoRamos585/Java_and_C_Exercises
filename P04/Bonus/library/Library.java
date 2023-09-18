@@ -22,7 +22,13 @@ public class Library
   private String name;
   private ArrayList <Publication> publications;
   private ArrayList <Patron> patrons;
-
+/**
+ *
+ * Constructor that stores the data recived into the class object
+ *
+ *@param name The name of the library
+ *
+*/ 
   public Library (String name)
   {
     this.name = name;
@@ -73,7 +79,7 @@ public class Library
 /**
  * Prints out the patron list for user to choose 
  *
- *
+ *@return Returns a string
  *
 */
   public String patronMenu()
@@ -114,7 +120,7 @@ public class Library
 
 /**
  * Prints out the list of publications for the user to choose
- *
+ *@return a string with the Publication info
 */
 
 

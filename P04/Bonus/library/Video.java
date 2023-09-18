@@ -18,7 +18,16 @@ public class Video extends Publication{
 
    private Duration runtime;
 
-
+/**
+ *
+ * This constructor inputs the author, copyright, and runtime into the Video object class
+ *
+ * @param title The name of the publication
+ * @param author The name of the author
+ * @param copyright The year of copyright
+ * @param runtime The amount of runtime in minutes
+ *
+ */
 
    public Video (String title, String author , int copyright , int runtime )
    {

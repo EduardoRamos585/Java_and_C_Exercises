@@ -27,6 +27,16 @@ public class Publication
    private Patron loanedTo;
    private LocalDate dueDate;
 
+
+
+ /**
+  *
+  * This constructor adds the title, author and copyright into the Publication object
+  *
+  *@param title The title of the publication
+  *@param author The author of the publication
+  *@param copyright the year of copyright
+ */
    public Publication(String title, String author, int copyright)
    {
       this.title = title;
@@ -47,7 +57,7 @@ public class Publication
 /**
  * Checks out the publication with the patron class belonging to the patron in question
  *
- *@param The Patron class for the patron checking out the publication
+ *@param patron The Patron class for the patron checking out the publication
 */
 
    public void checkOut( Patron patron)
@@ -56,7 +66,12 @@ public class Publication
     this.dueDate = dueDate.now().plusDays(14);
 
    }
-
+/**
+ *
+ * This method does nothing...for now
+ *
+ *
+ */
    public void checkIn()
    {
 
