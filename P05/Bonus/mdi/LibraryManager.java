@@ -19,45 +19,7 @@ import library.Publication;
 import library.Video;
 
 public class LibraryManager{
-
-public static void Add()
-{
-  System.out.println("Would you like to add a new publication or patron\n ");
-  System.out.println(" 0 for new publication, 1 for new patron");
-  int addChoice = Integer.parseint(System.console().readLine("Option :"));
-  
-  if(addChoice == 0)
-  {
-   String Pub_Name = System.console().readLine("What is the name of your publication?");
-   String Pub_Author = System.console().readLine("What is the name of the author?");
-   int year =  Integer.parseint(System.console().readLine("What is the copyright year?");
-   System.out.println("\n If your publication is a video, enter the runtime in minutes. If not, enter 0");
-   int runtime = Integer.parseint(System.console().readLine("Runtime :"));
-   	if(runtime == 0)
-	{
-	 library.addPublication(new Publication(Pub_Name,Pub_Author,year);
-
-	}
-	else
-	{
-	 library.addPublication(new Video(Pub_Name,Pub_Author,year,runtime);
-	}
-   {
-  else
-   {
-    String Pat_Name = System.console().readLine("What is the name of your patron?");
-    String Pat_Email = System.console().readLine("What is the email of your patron?");
-    library.addPatron(new Patron(Pat_Name,Pat_Email);
-   }
-}
-
-
-
-
-
-
-
-    public static void main(String[] args) {
+	public static void main(String[] args) {
         Library library = new Library("The Library at Alexandria (Texas)");
         library.addPublication(new Publication("The Cat in the Hat", "Dr. Suess", 1957));
         library.addPublication(new Publication("The Firm", "John Grisham", 1992));
@@ -88,10 +50,11 @@ public static void Add()
 	switch(menuChoice){
 	case 0 -> System.exit(0);
 	case 1 -> System.out.println(library);
-	case 2 -> Add();
+	case 2 -> Add(library);
 	default -> System.out.println("Invalid choice");
+	}
 
-        System.out.println(library);
+//        System.out.println(library);
 
 //        int selection = Integer.parseInt(System.console().readLine("\nWhich book to check out? "));
 //        System.out.println(library.patronMenu());
@@ -105,4 +68,38 @@ public static void Add()
 
 
     }
+
+
+
+  public static void Add(Library library)
+  {
+  	  System.out.println("Would you like to add a new publication or patron\n ");
+  	  System.out.println(" 0 for new publication, 1 for new patron");
+  	  int addChoice = Integer.parseInt(System.console().readLine("Option :"));
+
+  	  if(addChoice == 0)
+  	   {
+   		String Pub_Name = System.console().readLine("What is the name of your publication?");
+   		String Pub_Author = System.console().readLine("What is the name of the author?");
+   		int year =  Integer.parseInt(System.console().readLine("What is the copyright year?"));
+   		System.out.println("\n If your publication is a video, enter the runtime in minutes. If not, enter 0");
+   		int runtime = Integer.parseInt(System.console().readLine("Runtime :"));
+        	if(runtime == 0)
+        	{
+                   library.addPublication(new Publication(Pub_Name,Pub_Author,year));
+
+        	}
+        	else
+        	{
+         	   library.addPublication(new Video(Pub_Name,Pub_Author,year,runtime));
+        	}	
+  	  }
+  	  else
+   	  {
+    		String Pat_Name = System.console().readLine("What is the name of your patron?");
+    		String Pat_Email = System.console().readLine("What is the email of your patron?");
+    		library.addPatron(new Patron(Pat_Name,Pat_Email));
+   	  }	
+   }
 }
+
