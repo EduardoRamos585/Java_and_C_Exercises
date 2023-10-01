@@ -13,6 +13,7 @@
 // This is the beginning of Professor Rice's code
 package mdi;
 
+import java.util.Scanner;
 import library.Library;
 import library.Patron;
 import library.Publication;
@@ -28,39 +29,41 @@ public class LibraryManager{
         library.addPublication(new Video("Star Wars", "George Lucas", 1977, 121));
         library.addPublication(new Video("(Seven Samurai)", "Akira Kurosawa", 1954, 207));
         library.addPatron(new Patron("Prof Rice", "george.rice@uta.edu"));
+	Scanner in = new Scanner(System.in);
 // This is where I implement new modifications to the code. Please note that we are still using Professor Rice's code
 // and all credit goes to him.
+	  System.out.println();	
+	  System.out.println("Welcome to the Library at Alexandria (Texas)");
 
-	System.out.println("=========");
-	System.out.println("Main Menu");
-	System.out.println("=========");
-	System.out.println("\n \n");
+ 	  System.out.println("=========");
+	  System.out.println("Main Menu");
+	  System.out.println("=========");
+	  System.out.println("\n \n");
+          while (true)
+	  {
 
-	System.out.println("The Library at Alexandria (Texas)");
-	System.out.println("\n \n");
+	   System.out.println("How can we help you ?");
+	   System.out.println("\n");
 	
-	System.out.println("0) Exit");
-	System.out.println("1) List");
-	System.out.println("2) Add");
-	System.out.println("3) Check Out");
-	System.out.println("4) Check In");
-	
-	int menuChoice = Integer.parseInt(System.console().readLine("Selection :"));
+	   System.out.println("0) Exit");
+	   System.out.println("1) List");
+	   System.out.println("2) Add");
+	   System.out.println("3) Check Out");
+	   System.out.println("4) Check In");
+	   System.out.print("Selection :");
+	   int menuChoice = in.nextInt();
+	   System.out.println();
 
-	switch(menuChoice){
-	case 0 -> System.exit(0);
-	case 1 -> System.out.println(library);
-	case 2 -> Add(library);
-	default -> System.out.println("Invalid choice");
+	   switch(menuChoice){
+	   case 0 -> System.exit(0);
+	   case 1 -> System.out.println(library);
+	   case 2 -> Add(library,in);
+	   case 3 -> Checkout(library,in);
+	   case 4 -> CheckIn(library,in); 
+	   default -> System.out.println("Invalid choice, please try again");
+	  }
 	}
 
-//        System.out.println(library);
-
-//        int selection = Integer.parseInt(System.console().readLine("\nWhich book to check out? "));
-//        System.out.println(library.patronMenu());
-//        int patron = Integer.parseInt(System.console().readLine("\nWho are you? "));
-//        library.checkOut(selection, patron);
-//        System.out.println(library);
 
 
 
@@ -71,19 +74,22 @@ public class LibraryManager{
 
 
 
-  public static void Add(Library library)
+  public static void Add(Library library, Scanner in)
   {
-  	  System.out.println("Would you like to add a new publication or patron\n ");
+  	  System.out.println("Would you like to add a new publication or patron?\n ");
   	  System.out.println(" 0 for new publication, 1 for new patron");
-  	  int addChoice = Integer.parseInt(System.console().readLine("Option :"));
+  	  System.out.print("Option :");
+	  int addChoice = in.nextInt();
 
   	  if(addChoice == 0)
   	   {
    		String Pub_Name = System.console().readLine("What is the name of your publication?");
    		String Pub_Author = System.console().readLine("What is the name of the author?");
-   		int year =  Integer.parseInt(System.console().readLine("What is the copyright year?"));
-   		System.out.println("\n If your publication is a video, enter the runtime in minutes. If not, enter 0");
-   		int runtime = Integer.parseInt(System.console().readLine("Runtime :"));
+   		System.out.print("What is the copyright year of your publication ?");
+		int year = in.nextInt();
+   		System.out.println("If your publication is a video, enter the runtime in minutes. If not, enter 0.");
+   		System.out.print("Runtime :");
+		int runtime = in.nextInt();
         	if(runtime == 0)
         	{
                    library.addPublication(new Publication(Pub_Name,Pub_Author,year));
@@ -94,12 +100,48 @@ public class LibraryManager{
          	   library.addPublication(new Video(Pub_Name,Pub_Author,year,runtime));
         	}	
   	  }
-  	  else
+  	  else if(addChoice == 1)
    	  {
     		String Pat_Name = System.console().readLine("What is the name of your patron?");
     		String Pat_Email = System.console().readLine("What is the email of your patron?");
     		library.addPatron(new Patron(Pat_Name,Pat_Email));
-   	  }	
-   }
-}
+   	  }
+	  else
+	  {
+		System.out.println("ERROR: Invalid Command");
+	  }
 
+   }
+  
+
+
+
+
+   public static void Checkout(Library library, Scanner in)
+   {
+     System.out.println();
+     System.out.println(library);
+     System.out.println();
+     System.out.print("Which book to check out ?");
+     int selection = in.nextInt();
+     System.out.println(library.patronMenu());
+     System.out.println();
+     System.out.print("Who are you?");
+     int patron = in.nextInt();
+     library.checkOut(selection, patron);
+     System.out.println(library);
+
+	
+   }
+
+
+
+  public static void CheckIn(Library library, Scanner in)
+  {
+    System.out.println();
+    System.out.println(library);
+    System.out.print("What publication would you like to return ?");
+    int index = in.nextInt();
+    library.checkIn(index);
+  }
+}

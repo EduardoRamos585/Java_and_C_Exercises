@@ -82,6 +82,27 @@ public class Library {
                 + ": " + e.getMessage() + "\n");
         }
     }
+
+    public void checkIn(int publicationIndex)
+    {
+      try{
+	   publications.get(publicationIndex).checkIn();
+      } catch(Exception e){
+
+	  System.err.println("\nNon-existent publication at " + publicationIndex + ":" + e.getMessage() + "\n");
+      }
+
+
+    }
+
+
+
+
+
+
+
+
+
     /**
      * Lists all publications in this library instance.
      *
