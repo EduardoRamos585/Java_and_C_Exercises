@@ -83,6 +83,17 @@ public class Library {
         }
     }
 
+
+   /**
+    * Returns the publication to the library 
+    *
+    *
+    *@param publicationIndex   the index of the publication to be returned.
+    *
+    *@since                    1.0 
+    *
+    */
+
     public void checkIn(int publicationIndex)
     {
       try{
@@ -94,13 +105,7 @@ public class Library {
 
 
     }
-
-
-
-
-
-
-
+// checkIn was written by me. All other codes was written by Profeesor Rice.
 
 
     /**
