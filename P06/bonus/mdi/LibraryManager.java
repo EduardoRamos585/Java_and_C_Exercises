@@ -13,6 +13,12 @@
 // This is the beginning of Professor Rice's code
 package mdi;
 
+import java.io.FileReader;
+import java.io.BufferedReader;
+import java.io.FileWriter;
+import java.io.BufferedWriter;
+import java.io.IOException;
+
 import java.util.Scanner;
 import library.Library;
 import library.Patron;
@@ -48,22 +54,48 @@ public class LibraryManager{
 	
 	   System.out.println("0) Exit");
 	   System.out.println("1) List");
-	   System.out.println("2) Add");
-	   System.out.println("3) Check Out");
-	   System.out.println("4) Check In");
+	   System.out.println("2) List Patrons");
+	   System.out.println("3) Add");
+	   System.out.println("4) Check Out");
+	   System.out.println("5) Check In");
+	   System.out.println("6) Open");
+	   System.out.println("7) Save");
 	   System.out.print("Selection :");
 	   int menuChoice = in.nextInt();
 	   System.out.println();
+           
+	 try
+	  {
 
-	   switch(menuChoice){
-	   case 0 -> System.exit(0);
-	   case 1 -> System.out.println(library);
-	   case 2 -> Manager.Add(library,in);
-	   case 3 -> Manager.Checkout(library,in);
-	   case 4 -> Manager.CheckIn(library,in); 
-	   default -> System.out.println("Invalid choice, please try again");
-	  }
-	}
+
+	     switch(menuChoice){
+	     case 0 -> System.exit(0);
+	     case 1 -> System.out.println(library);
+	     case 2 -> System.out.println(library.patronMenu());
+	     case 3 -> Manager.Add(library,in);
+	     case 4 -> Manager.Checkout(library,in);
+	     case 5 -> Manager.CheckIn(library,in);
+	     case 6 -> Manager.openLibrary();
+	     case 7 -> Manager.saveLibrary(library);
+	     default -> System.out.println("Invalid choice, please try again");
+
+	   
+	    }
+
+	 }
+	 catch(Exception e)
+	 {
+           System.err.println(e);
+	 }
+
+	
+
+
+
+
+      }
+
+
 
 
 
@@ -92,21 +124,47 @@ public class LibraryManager{
    		System.out.print("Runtime :");
 		int runtime = in.nextInt();
         	if(runtime == 0)
-        	{
-                   library.addPublication(new Publication(Pub_Name,Pub_Author,year));
+        	{ try{
+                   	library.addPublication(new Publication(Pub_Name,Pub_Author,year));
+		     }
+		     catch(Exception e)
+		     {
+		       System.err.println(e);
+		     }
 
         	}
         	else
         	{
-         	   library.addPublication(new Video(Pub_Name,Pub_Author,year,runtime));
-        	}	
+		  try{
+
+		  
+         	      library.addPublication(new Video(Pub_Name,Pub_Author,year,runtime));
+		  }
+		  catch(Exception e)
+		  {
+		    System.err.println(e);
+		  }
+
+
+		
+	       }
+
   	  }
   	  else if(addChoice == 1)
    	  {
     		String Pat_Name = System.console().readLine("What is the name of your patron?");
     		String Pat_Email = System.console().readLine("What is the email of your patron?");
-    		library.addPatron(new Patron(Pat_Name,Pat_Email));
-   	  }
+		try{
+
+    		   library.addPatron(new Patron(Pat_Name,Pat_Email));
+		}
+		catch(Exception e)
+		{
+		  System.err.println(e);
+		}
+
+	  }
+
 	  else
 	  {
 		System.out.println("ERROR: Invalid Command");
@@ -145,4 +203,24 @@ public class LibraryManager{
     int index = in.nextInt();
     library.checkIn(index);
   }
+
+  public void openLibrary()
+  {
+
+  }
+
+
+  public void saveLibrary(Library library) throws IOException
+  {
+     String filename = System.console().readLine("What is the name of your save file ?");
+     try(BufferedWriter bw = new BufferedWriter(new FileWriter(filename)))
+     {
+       library.save(bw);
+     }catch (Exception e) {
+       System.err.println("Failed to write: " + e);
+
+     }
+
+  }
+
 }
