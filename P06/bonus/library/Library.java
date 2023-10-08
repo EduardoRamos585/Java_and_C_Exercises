@@ -44,6 +44,45 @@ public class Library {
      * @param publication  the publication to add to the library
      * @since              1.0
      */
+    public Library(BufferedReader br) throws IOException
+    {
+      this.name = br.readLine();
+      this.publications = new ArrayList<>();
+      this.patrons = new ArrayList<>();
+      int size = Integer.parseInt(br.readLine());
+      String parameter;
+      for(int i = 0 ; i < size ; i++)
+      {
+	 parameter = br.readLine();
+
+	 if(parameter.equals("publication"))
+	 {
+           Publication o = new Publication(br);
+	   publications.add(o);
+	 }
+
+	 if(parameter.equals("video"))
+	 {
+	   Video i = new Video(br);
+	   publications.add(i);
+
+	 }
+
+
+      }
+
+      int patronSize = Integer.parseInt(br.readLine());
+      for(int i = 0; i < patronSize ; i++)
+      {
+         Patron j = new Patron(br);
+	 patrons.add(j);
+
+      }
+
+
+    }
+
+
     public void addPublication(Publication publication) {
         publications.add(publication);
     }
@@ -121,17 +160,23 @@ public class Library {
        bw.write("" + publications.size() + '\n');
        for(Publication i : publications)
        {
-          if(i instanceof Publication)
+         if(i instanceof Publication && !(i instanceof Video))
 	  {
 	    bw.write("publication " + '\n');
-	    i.save(bw);
+	    
+	 
 	  }
 
 	  if(i instanceof Video)
 	  {
-	    bw.write("video" + '\n');
-	    i.save(bw);
+            bw.write("video" + '\n');
+            
+	    
+
 	  }
+
+	  i.save(bw);
+
       }
 
       bw.write("" + patrons.size() + '\n');

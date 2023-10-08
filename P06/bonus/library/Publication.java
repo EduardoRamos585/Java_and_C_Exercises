@@ -69,6 +69,28 @@ public class Publication {
     }
 
 
+    public Publication(BufferedReader br) throws IOException
+    {
+      this.title = br.readLine();
+      this.author = br.readLine();
+      this.copyright = Integer.parseInt(br.readLine());
+      String check = br.readLine();
+
+      if(check.equals("checked in"))
+      {
+        this.loanedTo = null;
+        this.dueDate = null;
+      }
+
+      if(check.equals("checked out"))
+      {
+
+       this loanedTo = new Patron(br);
+        
+      }
+
+
+    }
 
     public void save (BufferedWriter bw) throws IOException
     {
@@ -83,12 +105,13 @@ public class Publication {
        {
          bw.write("checked out" + '\n');
 	 loanedTo.save(bw);
+	 bw.write("" + dueDate.getDayOfMonth() + '\n');
+         bw.write("" + dueDate.getMonthValue() + '\n');
+         bw.write("" + dueDate.getYear()       + '\n');
+
+
 
        }
-       
-       bw.write("" + dueDate.getDayOfMonth() + '\n');
-       bw.write("" + dueDate.getMonthValue() + '\n');
-       bw.write("" + dueDate.getYear()       + '\n');
 
     }
 

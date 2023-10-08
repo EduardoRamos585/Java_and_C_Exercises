@@ -75,7 +75,7 @@ public class LibraryManager{
 	     case 3 -> Manager.Add(library,in);
 	     case 4 -> Manager.Checkout(library,in);
 	     case 5 -> Manager.CheckIn(library,in);
-	     case 6 -> Manager.openLibrary();
+	     case 6 -> Manager.openLibrary(library);
 	     case 7 -> Manager.saveLibrary(library);
 	     default -> System.out.println("Invalid choice, please try again");
 
@@ -204,8 +204,23 @@ public class LibraryManager{
     library.checkIn(index);
   }
 
-  public void openLibrary()
+  public void openLibrary(Library library) throws IOException
   {
+    
+    String filename = System.console().readLine("What is the name of the file to load ?");
+    try(BufferedReader br = new BufferedReader(new FileReader(filename)))
+    {
+      library = new Library(br);
+
+    }
+    catch(Exception e)
+    {
+     System.err.println(e);
+    }
+
+
+
+  
 
   }
 
