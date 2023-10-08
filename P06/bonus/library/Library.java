@@ -51,20 +51,20 @@ public class Library {
       this.patrons = new ArrayList<>();
       int size = Integer.parseInt(br.readLine());
       String parameter;
-      for(int i = 0 ; i < size ; i++)
+      for(int i = 0 ; i<size ; i++)
       {
 	 parameter = br.readLine();
 
 	 if(parameter.equals("publication"))
 	 {
-           Publication o = new Publication(br);
-	   publications.add(o);
+           Publication k = new Publication(br);
+      	   publications.add(i,k);
 	 }
 
 	 if(parameter.equals("video"))
 	 {
-	   Video i = new Video(br);
-	   publications.add(i);
+	   Video A = new Video(br);
+	   publications.add(i,A);
 
 	 }
 
@@ -74,8 +74,8 @@ public class Library {
       int patronSize = Integer.parseInt(br.readLine());
       for(int i = 0; i < patronSize ; i++)
       {
-         Patron j = new Patron(br);
-	 patrons.add(j);
+	 Patron L = new Patron(br);
+	 patrons.add(i,L);
 
       }
 

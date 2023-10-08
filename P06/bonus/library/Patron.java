@@ -44,6 +44,15 @@ public class Patron {
      * @since       1.0
      */
     
+    
+
+    public Patron(BufferedReader br) throws IOException
+    {
+      this.name = br.readLine();
+      this.email = br.readLine();
+    }
+
+
 
 
     public void save(BufferedWriter bw) throws IOException

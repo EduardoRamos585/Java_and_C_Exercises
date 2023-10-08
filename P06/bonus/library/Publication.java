@@ -85,12 +85,19 @@ public class Publication {
       if(check.equals("checked out"))
       {
 
-       this loanedTo = new Patron(br);
-        
+       this.loanedTo = new Patron(br);
+       int day = Integer.parseInt(br.readLine());
+       int month = Integer.parseInt(br.readLine());
+       int year = Integer.parseInt(br.readLine());
+
+       dueDate = dueDate.withDayOfMonth(day);
+       dueDate = dueDate.withMonth(month);
+       dueDate = dueDate.withYear(year);
       }
 
+      
 
-    }
+   }
 
     public void save (BufferedWriter bw) throws IOException
     {
