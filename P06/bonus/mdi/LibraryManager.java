@@ -26,8 +26,17 @@ import library.Publication;
 import library.Video;
 
 public class LibraryManager{
-	public static void main(String[] args) {
-        Library library = new Library("The Library at Alexandria (Texas)");
+private Library library;
+
+
+public LibraryManager (Library library)
+{
+    this.library = library;
+}
+
+
+public static void main(String[] args) {
+	Library library = new Library("Welcome to the Library at Dallas");
         library.addPublication(new Publication("The Cat in the Hat", "Dr. Suess", 1957));
         library.addPublication(new Publication("The Firm", "John Grisham", 1992));
         library.addPublication(new Publication("Foundation", "Isaac Asimov", 1951));
@@ -36,7 +45,8 @@ public class LibraryManager{
         library.addPublication(new Video("(Seven Samurai)", "Akira Kurosawa", 1954, 207));
         library.addPatron(new Patron("Prof Rice", "george.rice@uta.edu"));
 	Scanner in = new Scanner(System.in);
-	LibraryManager Manager = new LibraryManager();
+	LibraryManager Manager = new LibraryManager(library);
+
 // This is where I implement new modifications to the code. Please note that we are still using Professor Rice's code
 // and all credit goes to him.
 	  System.out.println();	
@@ -70,13 +80,13 @@ public class LibraryManager{
 
 	     switch(menuChoice){
 	     case 0 -> System.exit(0);
-	     case 1 -> System.out.println(library);
-	     case 2 -> System.out.println(library.patronMenu());
-	     case 3 -> Manager.Add(library,in);
-	     case 4 -> Manager.Checkout(library,in);
-	     case 5 -> Manager.CheckIn(library,in);
-	     case 6 -> Manager.openLibrary(library);
-	     case 7 -> Manager.saveLibrary(library);
+	     case 1 -> Manager.ListPublications();
+	     case 2 -> Manager.ListPatrons();
+	     case 3 -> Manager.Add(in);
+	     case 4 -> Manager.Checkout(in);
+	     case 5 -> Manager.CheckIn(in);
+	     case 6 -> Manager.openLibrary();
+	     case 7 -> Manager.saveLibrary();
 	     default -> System.out.println("Invalid choice, please try again");
 
 	   
@@ -102,12 +112,12 @@ public class LibraryManager{
 
 // This is the beginning of my code 
 
+}
+    
 
-    }
 
 
-
-  public void Add(Library library, Scanner in)
+  public void Add(Scanner in)
   {
   	  System.out.println("Would you like to add a new publication or patron?\n ");
   	  System.out.println(" 0 for new publication, 1 for new patron");
@@ -171,12 +181,29 @@ public class LibraryManager{
 	  }
 
    }
+
+
+
   
 
 
+   
+
+   public void ListPublications()
+   {
+     System.out.println(library);
+   }
 
 
-   public void Checkout(Library library, Scanner in)
+   public void ListPatrons()
+   {
+     System.out.println(library.patronMenu());
+   }
+
+
+ 
+
+   public void Checkout(Scanner in)
    {
      System.out.println();
      System.out.println(library);
@@ -195,7 +222,7 @@ public class LibraryManager{
 
 
 
-  public void CheckIn(Library library, Scanner in)
+  public void CheckIn(Scanner in)
   {
     System.out.println();
     System.out.println(library);
@@ -204,7 +231,7 @@ public class LibraryManager{
     library.checkIn(index);
   }
 
-  public void openLibrary(Library library) throws IOException
+  public void openLibrary() throws IOException
   {
     
     String filename = System.console().readLine("What is the name of the file to load ?");
@@ -225,12 +252,12 @@ public class LibraryManager{
   }
 
 
-  public void saveLibrary(Library library) throws IOException
+  public void saveLibrary() throws IOException
   {
      String filename = System.console().readLine("What is the name of your save file ?");
      try(BufferedWriter bw = new BufferedWriter(new FileWriter(filename)))
      {
-       library.save(bw);
+      library.save(bw);
      }catch (Exception e) {
        System.err.println("Failed to write: " + e);
 

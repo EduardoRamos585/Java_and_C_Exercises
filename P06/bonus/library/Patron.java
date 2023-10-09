@@ -48,8 +48,8 @@ public class Patron {
 
     public Patron(BufferedReader br) throws IOException
     {
-      this.name = br.readLine();
-      this.email = br.readLine();
+      name = br.readLine();
+      email = br.readLine();
     }
 
 

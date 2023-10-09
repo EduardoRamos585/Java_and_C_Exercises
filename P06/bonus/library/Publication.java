@@ -82,19 +82,19 @@ public class Publication {
 
       if(check.equals(checked_in))
       {
-        this.loanedTo = null;
-        this.dueDate = null;
+        loanedTo = null;
+        dueDate = null;
       }
 
       if(check.equals(checked_out))
       {
 
-       this.loanedTo = new Patron(br);
+       loanedTo = new Patron(br);
        String day = br.readLine();
        String month = br.readLine();
        String year = br.readLine();
        String format = new String(year + '-' + month + '-' + day);
-       this.dueDate = LocalDate.parse(format);
+       dueDate = LocalDate.parse(format);
      
 
       

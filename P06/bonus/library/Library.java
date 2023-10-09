@@ -46,11 +46,11 @@ public class Library {
      */
     public Library(BufferedReader br) throws IOException
     {
-      this.name =  br.readLine();
-      this.publications = new ArrayList<Publication>();
-      this.patrons = new ArrayList<Patron>();
+      name =  br.readLine();
+      publications = new ArrayList<Publication>();
+      patrons = new ArrayList<Patron>();
       String publication =  new String("publication");
-      String Video = new String("video");
+      String video = new String("video");
       int size = Integer.parseInt(br.readLine());
       String parameter;
       for(int i = 0 ; i<size ; i++)
@@ -64,7 +64,7 @@ public class Library {
       	   publications.add(new Publication(br));
 	 }
 
-	 if(parameter.equals(Video))
+	 if(parameter.equals(video))
 	 {
 	   
 	   publications.add(new Video(br));

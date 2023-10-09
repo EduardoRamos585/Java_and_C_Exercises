@@ -1,4 +1,4 @@
-The Library at Alexandria (Texas)
+Welcome to the Library at Dallas
 6
 publication
 The Cat in the Hat
@@ -14,7 +14,12 @@ publication
 Foundation
 Isaac Asimov
 1951
-checked in
+checked out
+Prof Rice
+george.rice@uta.edu
+22
+10
+2023
 video
 Citizen Kane
 Orson Welles
