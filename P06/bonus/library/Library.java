@@ -46,25 +46,28 @@ public class Library {
      */
     public Library(BufferedReader br) throws IOException
     {
-      this.name = br.readLine();
-      this.publications = new ArrayList<>();
-      this.patrons = new ArrayList<>();
+      this.name =  br.readLine();
+      this.publications = new ArrayList<Publication>();
+      this.patrons = new ArrayList<Patron>();
+      String publication =  new String("publication");
+      String Video = new String("video");
       int size = Integer.parseInt(br.readLine());
       String parameter;
       for(int i = 0 ; i<size ; i++)
       {
 	 parameter = br.readLine();
 
-	 if(parameter.equals("publication"))
+
+	 if(parameter.equals(publication))
 	 {
-           Publication k = new Publication(br);
-      	   publications.add(i,k);
+           
+      	   publications.add(new Publication(br));
 	 }
 
-	 if(parameter.equals("video"))
+	 if(parameter.equals(Video))
 	 {
-	   Video A = new Video(br);
-	   publications.add(i,A);
+	   
+	   publications.add(new Video(br));
 
 	 }
 
@@ -74,8 +77,8 @@ public class Library {
       int patronSize = Integer.parseInt(br.readLine());
       for(int i = 0; i < patronSize ; i++)
       {
-	 Patron L = new Patron(br);
-	 patrons.add(i,L);
+	 
+	 patrons.add(new Patron(br));
 
       }
 
@@ -162,7 +165,7 @@ public class Library {
        {
          if(i instanceof Publication && !(i instanceof Video))
 	  {
-	    bw.write("publication " + '\n');
+	    bw.write("publication" + '\n');
 	    
 	 
 	  }

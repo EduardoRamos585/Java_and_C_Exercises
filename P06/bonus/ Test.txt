@@ -1,25 +1,20 @@
 The Library at Alexandria (Texas)
 6
-publication 
+publication
 The Cat in the Hat
 Dr. Suess
 1957
 checked in
-publication 
+publication
 The Firm
 John Grisham
 1992
 checked in
-publication 
+publication
 Foundation
 Isaac Asimov
 1951
-checked out
-Prof Rice
-george.rice@uta.edu
-21
-10
-2023
+checked in
 video
 Citizen Kane
 Orson Welles
@@ -38,6 +33,8 @@ Akira Kurosawa
 1954
 checked in
 207
-1
+2
 Prof Rice
 george.rice@uta.edu
+Eduardo Ramos
+Eduardoisack2003@gmail.com

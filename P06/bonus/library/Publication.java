@@ -71,30 +71,35 @@ public class Publication {
 
     public Publication(BufferedReader br) throws IOException
     {
-      this.title = br.readLine();
-      this.author = br.readLine();
-      this.copyright = Integer.parseInt(br.readLine());
-      String check = br.readLine();
+      title = br.readLine();
+      author = br.readLine();
+      copyright = Integer.parseInt(br.readLine());
+      String checked_in = new String("checked in");
+      String checked_out = new String("checked out");
 
-      if(check.equals("checked in"))
+      String check = br.readLine();
+      
+
+      if(check.equals(checked_in))
       {
         this.loanedTo = null;
         this.dueDate = null;
       }
 
-      if(check.equals("checked out"))
+      if(check.equals(checked_out))
       {
 
        this.loanedTo = new Patron(br);
-       int day = Integer.parseInt(br.readLine());
-       int month = Integer.parseInt(br.readLine());
-       int year = Integer.parseInt(br.readLine());
+       String day = br.readLine();
+       String month = br.readLine();
+       String year = br.readLine();
+       String format = new String(year + '-' + month + '-' + day);
+       this.dueDate = LocalDate.parse(format);
+     
 
-       dueDate = dueDate.withDayOfMonth(day);
-       dueDate = dueDate.withMonth(month);
-       dueDate = dueDate.withYear(year);
+      
       }
-
+      
       
 
    }
