@@ -50,7 +50,7 @@ public static void main(String[] args) {
 // This is where I implement new modifications to the code. Please note that we are still using Professor Rice's code
 // and all credit goes to him.
 	  System.out.println();	
-	  System.out.println("Welcome to the Library at Alexandria (Texas)");
+	  System.out.println("Welcome to the Library at Dallas");
 
  	  System.out.println("=========");
 	  System.out.println("Main Menu");
