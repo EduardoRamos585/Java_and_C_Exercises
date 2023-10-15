@@ -11,7 +11,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
-public class WordSearch implements Runnable {
+public class WordSearch {
     private static final String usage = "usage: java WordSearch [-h] [-v] [#threads] [#puzzles] [puzzleFile]...";
 
     public WordSearch(List<String> args) {
@@ -76,7 +76,7 @@ public class WordSearch implements Runnable {
     // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
     // Modify THIS method to divide up the puzzles among your threads!
     // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    public static void solve() {
+    public void solve() {
         System.err.println ("\n" + NUM_PUZZLES + " puzzles with " 
             + NUM_THREADS + " threads"); // Show the # puzzles and threads
         // Solve all puzzles
@@ -84,15 +84,17 @@ public class WordSearch implements Runnable {
 	// Create the threads here
 	//
 	//
+        try{
+	Thread[] threads = new Thread[NUM_THREADS];
 
-	Threads[] threads = new Thread[NUM_THREADS];
-
-        for(final int i = 0 ; i < NUM_THREADS ; i++)
+        for( int i = 0 ; i < NUM_THREADS ; i++)
         {
+	  final int ThreadID = i;
 	  final int START = ((NUM_PUZZLES / NUM_THREADS)* ThreadID);
-          final int END   = ((NUM_PUZZLRS / NUM_THREADS)* (ThreadID + 1));
+          final int END   = ((NUM_PUZZLES / NUM_THREADS)* (ThreadID + 1));
 
-         threads[i] = (new Thread(() -> ws.solve(i,START,END))).start();
+         threads[i] = (new Thread(() -> solve(ThreadID,START,END)));
+	 threads[i].start();
         }
 
         for(int i = 0 ; i < NUM_THREADS ; i++)
@@ -100,25 +102,35 @@ public class WordSearch implements Runnable {
           threads[i].join();
        }
 
-    }
+	}catch(InterruptedException e)
+	{
+	  System.err.println(e.getMessage());
 
+	}
+
+
+
+    }
+ 
     public void solve(int threadID, int firstPuzzle, int lastPuzzlePlusOne) {
         System.err.println("Thread " + threadID + ": " + firstPuzzle + "-" + (lastPuzzlePlusOne-1));
         for(int i=firstPuzzle; i<lastPuzzlePlusOne; ++i) {
 
-	   		
+            synchronized(lock)
+	    {	   		
             Puzzle p = puzzles.get(i);
             Solver solver = new Solver(p);
             for(String word : p.getWords()) {
                 try {
-                    Solution s = solver.solve(word);
-                    if(s == null) System.err.println("#### Failed to solve " + p.name() + " for '" + word + "'");
-                    else solutions.add(s);
+                    Solution s = solver.solve(word);  
+                     if(s == null) System.err.println("#### Failed to solve " + p.name() + " for '" + word + "'");
+                     else solutions.add(s);
                 } catch (Exception e) {
                     System.err.println("#### Exception solving " + p.name() 
                         + " for " + word + ": " + e.getMessage());
                 }
-            }
+             }
+	    }
         }
         
         // -------- All Puzzles Solved --------
@@ -130,7 +142,7 @@ public class WordSearch implements Runnable {
     public static void main(String[] args) {
         WordSearch ws = new WordSearch(new LinkedList<>(Arrays.asList(args)));
          
-	ws.solve()
+	ws.solve();
 
         if(ws.verbose) ws.printSolutions();
     }
