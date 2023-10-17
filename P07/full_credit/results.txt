@@ -288,7 +288,7 @@ before my program started to take longer, but it did show some decrease after ad
 
 
 QUESTION 4: Does adding more threads increase the "system load" (sys), or is it constant regardless of the number of threads?  Why?
- I belive adding more threads does not increase the system load significantly, regardless of the amount of threads. Of course, we do see a spike in system load time evrey once in a while. However, the data
+ I believe adding more threads does not increase the system load significantly, regardless of the amount of threads. Of course, we do see a spike in system load time evrey once in a while. However, the data
 shows a rather consintent time for the system load. This is due to the optimazation of my laptop, where the overloading of one core will force the other cores to speed up, resulting in consitent results to a 
 certain degree.
 
