@@ -93,15 +93,15 @@ public class WordSearch {
 	  final int START = ((NUM_PUZZLES / NUM_THREADS)* ThreadID);
           final int END;
 
-          if(ThreadID == NUM_PUZZLES -1)
-          {
-           END = NUM_PUZZLES;  // Ensure we get all the puzzles
-          }
-          else
-          {
-             END   = ((NUM_PUZZLES / NUM_THREADS)* (ThreadID + 1));
+	  if(ThreadID == NUM_PUZZLES -1)
+	  {
+	   END = NUM_PUZZLES;  // Ensure we get all the puzzles
+	  }
+	  else
+	  {
+	     END   = ((NUM_PUZZLES / NUM_THREADS)* (ThreadID + 1));
 
-          }
+	  }
 
 
 
@@ -127,23 +127,45 @@ public class WordSearch {
     public void solve(int threadID, int firstPuzzle, int lastPuzzlePlusOne) {
         System.err.println("Thread " + threadID + ": " + firstPuzzle + "-" + (lastPuzzlePlusOne-1));
         for(int i=firstPuzzle; i<lastPuzzlePlusOne; ++i) {
+            int Index = 0;
 
-            synchronized(lock)
-	    {	   		
-            Puzzle p = puzzles.get(i);
+		synchronized(PoolLock)
+		{
+                   if(WorkCounter < NUM_PUZZLES)
+		   {
+		     Index = WorkCounter;
+		     WorkCounter++;
+		   }
+		   else
+		   {
+	             break;
+		   }
+
+
+		}
+
+            
+            Puzzle p = puzzles.get(Index);
             Solver solver = new Solver(p);
 	    
             for(String word : p.getWords()) {
                 try {
                     Solution s = solver.solve(word);
                      if(s == null) System.err.println("#### Failed to solve " + p.name() + " for '" + word + "'");
-                     else solutions.add(s);
+                     else
+		     {
+		       synchronized (lock)
+		       {
+
+		         solutions.add(s);
+		       }
+		     }
                 } catch (Exception e) {
                     System.err.println("#### Exception solving " + p.name() 
                         + " for " + word + ": " + e.getMessage());
                 }
              }
-	   } 
+	    
         }
         
         // -------- All Puzzles Solved --------
@@ -163,7 +185,8 @@ public class WordSearch {
     public final int NUM_THREADS;
     public final int NUM_PUZZLES;
     public final boolean verbose;
-
+    private int WorkCounter;
+    private static Object PoolLock = new Object();
     private static Object lock = new Object();
     private List<Puzzle> puzzles = new ArrayList<>();;
     private TreeSet<Solution> solutions = new TreeSet<>();
