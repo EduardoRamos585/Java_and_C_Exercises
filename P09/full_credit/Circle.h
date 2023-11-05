@@ -2,14 +2,15 @@
 #define _CIRCLE_H_
 
 #include <iostream>
+#include "Shape.h"
 
-class Circle: public Shape{
+class Circle: public Shape {
 	public:
 	Circle(double radius);
-	std::string name();
-	double area();
+	std::string name() override;
+	double area() override;
 
-	private:
+	protected:
 	double radius;
 };
 

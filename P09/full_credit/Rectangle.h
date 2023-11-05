@@ -2,15 +2,15 @@
 #define _RECTANGLE_H
 
 #include <iostream>
-
+#include "Shape.h"
 
 class Rectangle: public Shape {
 	public :
 	  Rectangle(double height, double width);
-	  std::string name();
-	  double area();
+	  std::string name() override;
+	  double area() override;
 
-	private:
+	protected:
 	  double height, width;
 
 };

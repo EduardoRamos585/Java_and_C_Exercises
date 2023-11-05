@@ -6,12 +6,12 @@ Rectangle::Rectangle(double height , double width)
 	 : height{height}, width{width} {}
 
 
-std::string Rectangle::name() override
+std::string Rectangle::name()
 {
   return std::to_string(height) + " x " + std::to_string(width) + " Rectangle";
 }
 
-double Rectangle::area() override
+double Rectangle::area()
 {
    double area = height * width;
 
