@@ -1,5 +1,3 @@
-
-
 #include "Circle.h"
 
 
@@ -14,7 +12,7 @@ std::string Circle::name()
 
 double Circle::area()
 {
-  double pi = 3.141593;
+  double pi = M_PI;
   double area = pi * (radius * radius);
   return area;
 }
