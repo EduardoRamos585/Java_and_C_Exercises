@@ -6,12 +6,12 @@
 class Location{
 	public:
 	Location(std::string filename , int line);
-	bool operator==(const Location& location);
-	bool operator!=(const Location& location);
-	bool operator<(const Location& location);
-	bool operator>(const Location& location);
-	bool operator<=(const Location& location);
-	bool operator>=(const Location& location);
+	bool operator==(const Location& location)const;
+	bool operator!=(const Location& location)const;
+	bool operator<(const Location& location)const;
+	bool operator>(const Location& location)const;
+	bool operator<=(const Location& location)const;
+	bool operator>=(const Location& location)const;
 	friend std::ostream& operator<<(std::ostream& ost, Location& location);
 
 	private:

@@ -2,7 +2,7 @@
 #include <fstream>
 #include <cstring>
 
-Location::Location(std::string filename, int line) :
+Location::Location(std::string filename, int line) 
 	:_filename(filename), _line(line) {
 	
 if(filename == "")
@@ -28,9 +28,9 @@ if(line <= 0)
 bool Location::operator==(const Location& location)
 {
 
- if((strcmp(this->_filename,location._filename) == 0)
+ if((this->_filename.compare(location._filename))==0)
  {
-    if(this->line == location._line)
+    if(this->_line == location._line)
     {
        return true;
     }
@@ -41,9 +41,129 @@ bool Location::operator==(const Location& location)
 
 
  }
-
-return false;
-
+ else
+ {
+   return false;
+ }
 
 }
+
+bool Location::operator!=(const Location& location)
+{
+   if((this->_filename.compare(location._filename))!=0)
+ {
+    if(this->_line != location._line)
+    {
+       return true;
+    }
+    else
+    {
+      return false;
+    }
+
+
+ }
+ else
+ {
+   return false;
+ }
+
+}
+
+bool Location::operator<(const Location& location)
+{
+   if((this->_filename.compare(location._filename)) <0)
+   {
+    if(this->_line < location._line)
+    {
+       return true;
+    }
+    else
+    {
+      return false;
+    }
+
+
+  } 
+  else
+  {
+    return false;
+  }
+
+}
+
+bool Location::operator>(const Location& location)
+{
+   if((this->_filename.compare(location._filename)) >0)
+   {
+    if(this->_line > location._line)
+    {
+       return true;
+    }
+    else
+    {
+      return false;
+    }
+
+
+  }
+  else
+  {
+    return false;
+  }
+
+}
+
+bool Location::operator<=(const Location& location)
+{
+  if((this->_filename.compare(location._filename)) <0 || ((this->_filename.compare(location._filename) == 0)))
+   {
+    if(this->_line <= location._line)
+    {
+       return true;
+    }
+    else
+    {
+      return false;
+    }
+
+
+  }
+  else
+  {
+    return false;
+  }
+
+}
+
+bool Location::operator>=(const Location& location)
+{
+  if((this->_filename.compare(location._filename)) >0 || ((this->_filename.compare(location._filename) == 0)))
+   {
+    if(this->_line >= location._line)
+    {
+       return true;
+    }
+    else
+    {
+      return false;
+    }
+
+
+  }
+  else
+  {
+    return false;
+  }
+
+}
+
+std::ostream& operator<<(std::ostream& ost, Location& location)
+{
+  ost << location._filename << " Line " << location._line;
+
+  return ost;
+}
+
+
 
