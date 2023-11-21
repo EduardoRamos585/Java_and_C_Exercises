@@ -24,97 +24,36 @@ if(line <= 0)
 
 }
 
-
-bool Location::operator==(const Location& location)
+bool Location::operator==(const Location& location) const
 {
 
- if((this->_filename.compare(location._filename))==0)
- {
-    if(this->_line == location._line)
-    {
-       return true;
-    }
-    else
-    {
-      return false;
-    }
+  return _filename == location._filename && _line == location._line;
+}
 
+bool Location::operator!=(const Location& location) const
+{
 
- }
- else
- {
-   return false;
- }
+ return !(*this == location);
 
 }
 
-bool Location::operator!=(const Location& location)
+bool Location::operator<(const Location& location) const
 {
-   if((this->_filename.compare(location._filename))!=0)
- {
-    if(this->_line != location._line)
-    {
-       return true;
-    }
-    else
-    {
-      return false;
-    }
-
-
- }
- else
- {
-   return false;
- }
-
-}
-
-bool Location::operator<(const Location& location)
-{
-   if((this->_filename.compare(location._filename)) <0)
+  if((this->_filename.compare(location._filename)) <0)
    {
-    if(this->_line < location._line)
-    {
-       return true;
-    }
-    else
-    {
-      return false;
-    }
+     return _line < location._line;
+   }
 
-
-  } 
-  else
-  {
-    return false;
-  }
-
+   return _filename < location._filename;
 }
 
-bool Location::operator>(const Location& location)
+bool Location::operator>(const Location& location) const
 {
-   if((this->_filename.compare(location._filename)) >0)
-   {
-    if(this->_line > location._line)
-    {
-       return true;
-    }
-    else
-    {
-      return false;
-    }
-
-
-  }
-  else
-  {
-    return false;
-  }
+   return location < *this;
 
 }
 
-bool Location::operator<=(const Location& location)
+bool Location::operator<=(const Location& location) const
 {
   if((this->_filename.compare(location._filename)) <0 || ((this->_filename.compare(location._filename) == 0)))
    {
@@ -136,7 +75,7 @@ bool Location::operator<=(const Location& location)
 
 }
 
-bool Location::operator>=(const Location& location)
+bool Location::operator>=(const Location& location) const
 {
   if((this->_filename.compare(location._filename)) >0 || ((this->_filename.compare(location._filename) == 0)))
    {
@@ -158,7 +97,8 @@ bool Location::operator>=(const Location& location)
 
 }
 
-std::ostream& operator<<(std::ostream& ost, Location& location)
+
+std::ostream& operator<<(std::ostream& ost, const Location& location)
 {
   ost << location._filename << " Line " << location._line;
 

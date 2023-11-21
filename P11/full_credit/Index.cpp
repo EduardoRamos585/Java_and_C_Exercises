@@ -8,15 +8,11 @@ void Index::add_word(Word word, std::string filename, int line)
 
   if(it == _index.end())
   {
-    Locations set;
-
-    set.insert(Location{filename,line});
-
-    _index.insert({word, set});
+   Locations() = _index[word];
   }
   else
   {
-     it->second.insert(Location{filename, line});
+     _index[word].insert(Location(filename,line));
   }
 
 }
@@ -24,23 +20,18 @@ void Index::add_word(Word word, std::string filename, int line)
 std::ostream& operator<<(std::ostream& ost, const Index& index)
 {
 
-  std::map<Word, Locations>::iterator its;
+ for(const auto& entry : index._index)
+ {
+   ost << entry.first << ": ";
+   for(const auto& location : entry.second)
+   {
+     ost << location << " , ";
+   }
 
-  for(its = index._index.begin(); its != index._index.end() ; ++its)
-  {
-    ost << its->first << ':';
+   ost << std::endl;
 
-    Locations::iterator it_set;
-    for(it_set = its->second.begin(); it_set != its->second.end(); ++it_set)
-    {
-       ost << *it_set << ',';
-    }
+ }
 
-    ost << std::endl;
-
-  }
-
-return ost;
-
+ return ost;
 }
 

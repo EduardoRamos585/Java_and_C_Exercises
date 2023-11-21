@@ -12,7 +12,7 @@ class Location{
 	bool operator>(const Location& location)const;
 	bool operator<=(const Location& location)const;
 	bool operator>=(const Location& location)const;
-	friend std::ostream& operator<<(std::ostream& ost, Location& location);
+	friend std::ostream& operator<<(std::ostream& ost, const Location& location);
 
 	private:
 	std::string _filename;
